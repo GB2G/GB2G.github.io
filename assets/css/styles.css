@@ -12,11 +12,6 @@ p:hover {
   color: #32e2a2;
 }
 
-.Slider p{
-  text-decoration: none;
-  color:white;
-}
-
 @media (max-width: 767px) and (min-width: 300px) {
   .h1, h1 {
     font-size: calc(1.375rem + 9vw);
