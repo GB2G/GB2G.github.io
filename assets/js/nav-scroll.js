@@ -1,6 +1,11 @@
-$(function () {
-  $(document).scroll(function () {
-    var $nav = $(".navbar-fixed-top");
-    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-  });
-});
+const navEl = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+    if(window.scrollY >= 56){
+        navEl.classList.add('navbar-scrolled')
+    }
+
+    else if(window.scrollY < 56){
+        navEl.classList.remove('navbar-scrolled');
+    }
+})
