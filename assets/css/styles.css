@@ -12,11 +12,8 @@ p:hover {
   color: #32e2a2;
 }
 
-a{
-  text-decoration: none;
-}
-
 #Slider button a{
+  text-decoration: none;
   color:white;
 }
 
