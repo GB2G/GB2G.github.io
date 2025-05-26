@@ -23,6 +23,10 @@
   color: white;
 }
 
+.navbar-scrolled .nav-link-active {
+  color: #32e2a2;
+}
+
 @media (min-width: 768px) {
   .h1, h1 {
     font-size: calc(1.375rem + 6vw);
