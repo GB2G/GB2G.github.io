@@ -15,13 +15,11 @@
   border-radius: 50px;
 }
 
-.navbar-scrolled span {
-  color: white;
-}
 
 .navbar-scrolled .nav-link {
   color: white;
 }
+
 
 .navbar-scrolled .active {
   color: #32e2a2;
@@ -248,4 +246,8 @@ section .card .image img {
 
 a:hover {
   --bs-link-color: #32e2a2;
+
+
 }
+
+
