@@ -1,16 +1,31 @@
-.navbar-fixed-top{
+.navbar-fixed-top {
   position: fixed;
-  top:0;
-  right:0;
-  left:0;
-  z-index:1030;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 
-.navbar-fixed-top.scrolled{
-  background-color: var(--bs-link-color-rgb) !important;
-  transition: background-color 200ms linear;
+.navbar-scrolled {
+  background-color: var(--bs-secondary) !important;
+  transition: all 0.5s linear;
+  margin: auto;
+  width: 60%;
+  margin-top: 2vh;
+  border-radius: 50px;
 }
 
+.navbar-scrolled span {
+  color: white;
+}
+
+.navbar-scrolled .nav-link {
+  color: white;
+}
+
+.navbar-scrolled .active {
+  color: #32e2a2;
+}
 
 @media (min-width: 768px) {
   .h1, h1 {
@@ -25,8 +40,6 @@ p {
 p:hover {
   color: #32e2a2;
 }
-
-
 
 @media (max-width: 767px) and (min-width: 300px) {
   .h1, h1 {
@@ -234,6 +247,5 @@ section .card .image img {
 }
 
 a:hover {
-  --bs-link-color-rgb: #32e2a2;
+  --bs-link-color: #32e2a2;
 }
-
