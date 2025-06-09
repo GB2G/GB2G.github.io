@@ -7,7 +7,7 @@
 }
 
 .navbar-scrolled {
-  background-color: var(--bs-secondary) !important;
+  background-color: rgba(108, 117, 125, .8) !important;
   transition: all 0.5s linear;
   margin: auto;
   width: 60%;
