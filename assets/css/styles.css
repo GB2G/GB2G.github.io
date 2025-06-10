@@ -15,15 +15,49 @@
   border-radius: 50px;
 }
 
+.navbar-scrolled navbar{
+  margin:20px;
+}
 
+.navbarIcon{
+  margin-left: 25px;
+}
 .navbar-scrolled .nav-link {
   color: white;
 }
 
 
-.navbar-scrolled .active {
-  color: #32e2a2;
+.navTitle{
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 7px;
+  text-decoration: none;
+  color: var(--bs-navbar-brand-color);
+  padding-right: 15px;
+  
 }
+
+.navTitle:hover{
+  color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));
+}
+
+.navbar-scrolled .navTitle{
+  color: white;
+}
+
+.navbar-scrolled .activeLink{
+  color: var(--bs-link-hover);
+}
+
+.nav-link:hover{
+  color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));
+}
+
+.navList{
+  margin-right:25px;
+}
+
+
 
 @media (min-width: 768px) {
   .h1, h1 {
