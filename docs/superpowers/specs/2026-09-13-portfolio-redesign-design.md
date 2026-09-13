@@ -8,9 +8,10 @@
 
 The existing site is a SEG3525 course deliverable. It presents Kevin El-Saikali as a
 second-year *UI/UX design* student, is built on Bootstrap 5 + AOS + Font Awesome, and
-its content is eighteen months stale. Three of its outbound project links 404. Its
-contact form has no backend, so submissions are silently discarded. None of the four
-applications built during 2026 appear on it.
+its content is eighteen months stale. Two of its outbound project links 404. Its
+contact form has no backend, so submissions are silently discarded. None of the five
+applications built during 2026 appear on it — including the largest, a live
+multi-user library application under active development.
 
 The site's job is changing: it must now work as a **software engineering portfolio**
 aimed at recruiters and hiring managers, for a fourth-year student seeking new-grad
@@ -19,7 +20,8 @@ roles.
 ## Goals
 
 1. Present the work as engineering, not design coursework.
-2. Surface the 2026 projects, led by the two shipped for real clients.
+2. Surface the 2026 projects, led by Psaltikon Library — the only one with
+   authentication, a relational schema and an admin surface.
 3. Nothing on the site 404s.
 4. Adding a project later means appending one object to one file.
 
@@ -100,12 +102,12 @@ src/
   data/
     profile.ts      name, bio, education, availability, contact, socials
     projects.ts     Project[] — the single source of truth for all work
-    skills.ts       the three stack-strip groups
+    skills.ts       the three stack-strip groups (see §3)
   components/
     Nav.tsx         sticky; brand, anchors, ThemeToggle
     Hero.tsx        eyebrow, headline, blurb, side meta block
     StackStrip.tsx  three bordered columns
-    SectionHead.tsx numbered rule ("01 — Selected work ———— 04 projects")
+    SectionHead.tsx numbered rule ("01 — Selected work ———— 05 projects")
     ProjectRow.tsx  one project
     ProjectList.tsx maps a Project[] to rows
     About.tsx
@@ -179,6 +181,17 @@ fourth-year standing in September 2026. Both strings live in `profile.ts` as a s
 
 The page is ordered: `01` Selected work, `02` Earlier work, `03` About, `04` Contact.
 
+### Stack strip
+
+Three groups in `skills.ts`. Data and SQL now belong on this list — the Psaltikon
+schema work is a real part of the story and would otherwise be invisible:
+
+| Group | Contents |
+| --- | --- |
+| Languages | TypeScript, JavaScript, Java, Python, Kotlin, SQL |
+| Frameworks | React 19, Next.js, Vite, Tailwind, Framer Motion |
+| Platform | Supabase, PostgreSQL, Vercel, GitHub Actions, Node, Android |
+
 The current "As a UI/UX designer, I approach my work by putting the user at the
 center of every decision…" passage is removed entirely, along with the
 Web design / Development / Hosting service tiles. Those frame the site as a designer
@@ -186,17 +199,38 @@ advertising services; the site is now a student applying for engineering roles.
 
 ### Selected work — 2026
 
-| Project | Client | Stack | Links |
-| --- | --- | --- | --- |
-| **Pitch Partners** | ✓ | Vite, React, Framer Motion, serverless `api/send-booking.js`, Vercel | Live `pitchpartners.ca`, Source |
-| **Vanna Noun — Renoun Creation** | ✓ | Next.js App Router, TypeScript, Tailwind v4, Resend | Source |
-| **InkbyOs** | ✓ | Vite, React 18, TypeScript, Vercel | Live, Source |
-| **Blackjack** | | React 19, TypeScript, Tailwind v4, Framer Motion | Source |
+| Project | Stack | Links |
+| --- | --- | --- |
+| **Psaltikon Library** | React 19, TypeScript, Vite, Tailwind v4, Supabase (Postgres + Auth + RLS), pdf-lib | Live, Source |
+| **Pitch Partners** | Vite, React, Framer Motion, serverless `api/send-booking.js`, Vercel | Live `pitchpartners.ca`, Source |
+| **Vanna Noun — Renoun Creation** | Next.js App Router, TypeScript, Tailwind v4, Resend | Source |
+| **InkbyOs** | Vite, React 18, TypeScript, Vercel | Live, Source |
+| **Blackjack** | React 19, TypeScript, Tailwind v4, Framer Motion | Source |
 
-Pitch Partners leads the section. It is a marketing and booking site for a
-professional football coaching business, live on its own custom domain with a working
-serverless booking endpoint — the strongest credential in the set, and the only one
-on a domain the client owns.
+**Psaltikon Library leads the section**, and the hero copy should reflect that the
+portfolio is anchored by a live multi-user application rather than by marketing sites.
+
+It is a digital library of Orthodox Byzantine chant, built under the
+`psaltikon-library` GitHub organisation and live at
+`psaltikon-library.github.io/psaltikon-library`. Nine routed pages including an admin
+dashboard; Supabase Postgres behind it with Supabase Auth and per-user row-level
+security policies; twelve SQL migrations between May and August 2026 covering saved
+chants, booklets, chant PDFs, a submissions pipeline with a Postgres email trigger,
+and security-definer stats views; PDF rendering via `react-pdf` and booklet
+generation via `pdf-lib`; deployed by GitHub Actions.
+
+This is the only project in the portfolio with authentication, a relational schema,
+an authorization model, an administrative surface, and sustained schema evolution
+against live data. It is ordered first for that reason.
+
+Attribution: 82 of the repository's 88 commits are Kevin's, alongside two other
+contributors. It is described as an organisation project on which he is the principal
+developer — accurate in both directions, neither claiming sole authorship nor
+underselling the contribution.
+
+Pitch Partners follows: a marketing and booking site for a professional football
+coaching business, live on a domain the client owns, with a working serverless
+booking endpoint.
 
 Vanna Noun has no public deployment, so it carries a source link only.
 
