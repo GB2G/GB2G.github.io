@@ -281,9 +281,29 @@ of, and a recruiter running Lighthouse is a realistic scenario.
 | Check | Command | Gates deploy |
 | --- | --- | --- |
 | Types | `npm run typecheck` (`tsc --noEmit`, strict) | yes |
+| Unit + component | `npm test` (Vitest + Testing Library, jsdom) | yes |
 | Build | `npm run build` | yes |
 | Outbound links | `npm run check-links` | **no** |
-| Keyboard, reduced motion, contrast, Lighthouse | manual, before merge | — |
+| Keyboard, reduced motion, Lighthouse | manual, before merge | — |
+
+The unit layer is deliberately narrow. Three things are worth asserting on a static
+site, and they map to the three decisions in this spec that are easy to silently
+regress:
+
+1. **Token contrast.** A test parses `tokens.css`, extracts each theme's custom
+   properties, computes WCAG contrast for every foreground/background pair, and fails
+   below 4.5:1. This is what makes "verified against AA" a build step rather than a
+   good intention.
+2. **Project data invariants.** Unique ids, and every project having either a
+   non-empty `links` array or a `note`. This enforces the "nothing 404s" goal
+   structurally, so a future project added without a link can't quietly render a
+   dangling row.
+3. **Contact surface.** An assertion that the rendered contact section contains no
+   `tel:` link, no street address, and no `<form>` — the privacy and honesty
+   decisions above, pinned so they survive later edits.
+
+Component tests cover the theme toggle's `aria-pressed` cycle and `ProjectRow`'s
+two render paths (links vs note).
 
 `check-links` reads `projects.ts` and `profile.ts`, requests every `href`, and fails
 on any non-2xx.
