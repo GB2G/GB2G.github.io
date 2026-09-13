@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 // __dirname does not exist in ESM — resolve relative to this module's URL.
 const css = readFileSync(fileURLToPath(new URL('./tokens.css', import.meta.url)), 'utf8')
+const globalCss = readFileSync(fileURLToPath(new URL('./global.css', import.meta.url)), 'utf8')
 
 function block(selector: string): Record<string, string> {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -60,5 +61,24 @@ describe.each([
     expect(paper, '--paper missing').toBeDefined()
     expect(accent, '--accent missing').toBeDefined()
     expect(contrast(paper as string, accent as string)).toBeGreaterThanOrEqual(4.5)
+  })
+})
+
+// A generic "opacity < 1 in a rule that also sets color" scan cannot see this
+// class of bug reliably: .row__note's muted color comes from its ancestor
+// .row__meta (color: var(--muted)), not from a `color` declaration on
+// .row__note's own rule. Text-only CSS parsing has no notion of the DOM
+// nesting between selectors, so it cannot resolve that inherited color — a
+// generic check would either miss this exact case (false negative) or need to
+// assume every opacity user is a text color (false positive on legitimate
+// uses, e.g. an opacity on an image or a disabled-state overlay). A focused,
+// honest assertion on the one rule that caused a real AA failure is more
+// reliable than a generic scan that cannot see inheritance.
+describe('row__note opacity regression', () => {
+  it('.row__note declares no opacity (it previously multiplied --muted below AA)', () => {
+    const match = /\.row__note\s*\{([^}]*)\}/.exec(globalCss)
+    expect(match, '.row__note rule not found in global.css').not.toBeNull()
+    const body = match?.[1] ?? ''
+    expect(body).not.toMatch(/opacity\s*:/)
   })
 })

@@ -164,6 +164,11 @@ a {
   margin: 0 0 var(--step-3);
 }
 
+.hero__name {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 0 0 var(--step-2);
+}
+
 .hero__headline {
   font-size: clamp(2.5rem, 8vw, 4.5rem);
 }
@@ -326,9 +331,12 @@ a {
   color: var(--ink);
 }
 
+.row__category {
+  color: var(--muted);
+}
+
 .row__note {
   font-style: normal;
-  opacity: 0.8;
   text-transform: none;
   letter-spacing: 0.04em;
 }

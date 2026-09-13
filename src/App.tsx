@@ -20,9 +20,11 @@ export default function App() {
 
       <Nav />
       <Hero />
-      <StackStrip />
+      <section aria-label="Stack">
+        <StackStrip />
+      </section>
 
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <section id="work" className="page" aria-labelledby="work-heading">
           <SectionHead
             index="01"
