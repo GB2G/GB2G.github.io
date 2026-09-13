@@ -22,7 +22,7 @@ export const projects: readonly Project[] = [
     category: 'client',
     featured: true,
     summary:
-      'Marketing and booking site for a professional football coaching business, live on the client\'s own domain. Multi-page React app with animated route transitions and a serverless booking endpoint that delivers enquiries by email.',
+      'Marketing and booking site for a professional football coaching business, live on the client’s own domain. Multi-page React app with animated route transitions and a serverless booking endpoint that delivers enquiries by email.',
     stack: ['React', 'Vite', 'Framer Motion', 'Serverless', 'Vercel'],
     links: [
       { label: 'Live', href: 'https://pitchpartners.ca' },
