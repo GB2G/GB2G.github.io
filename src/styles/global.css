@@ -150,3 +150,77 @@ a {
     display: none;
   }
 }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--step-4);
+  align-items: end;
+  padding-block: var(--step-5) var(--step-4);
+}
+
+.hero__eyebrow {
+  color: var(--accent);
+  margin: 0 0 var(--step-3);
+}
+
+.hero__headline {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+}
+
+.hero__headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero__meta {
+  margin: 0;
+  text-align: right;
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+.hero__meta dt {
+  color: var(--accent);
+  margin-top: var(--step-2);
+}
+
+.hero__meta dd {
+  margin: 0.2rem 0 0;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.strip {
+  border-block: 1px solid var(--rule);
+}
+
+.strip__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.strip__group {
+  padding: var(--step-2) var(--step-2) var(--step-2) 0;
+}
+
+.strip__label {
+  color: var(--muted);
+  margin: 0 0 0.35rem;
+}
+
+.strip__items {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 48rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero__meta {
+    text-align: left;
+  }
+}
