@@ -54,6 +54,21 @@ describe('readStoredTheme', () => {
     })
     expect(readStoredTheme()).toBe('system')
   })
+
+  it('agrees with the inline script when storage throws but system is dark', () => {
+    vi.stubGlobal('localStorage', {
+      getItem() {
+        throw new Error('SecurityError')
+      },
+      setItem() {
+        throw new Error('SecurityError')
+      },
+    })
+    stubMatchMedia(true)
+    // When storage is unavailable, readStoredTheme returns 'system',
+    // and resolveTheme('system', true) must be 'dark' to prevent flash
+    expect(resolveTheme(readStoredTheme(), true)).toBe('dark')
+  })
 })
 
 describe('useTheme', () => {

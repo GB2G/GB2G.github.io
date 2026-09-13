@@ -21,7 +21,12 @@
               window.matchMedia('(prefers-color-scheme: dark)').matches);
           document.documentElement.dataset.theme = dark ? 'dark' : 'light';
         } catch (e) {
-          document.documentElement.dataset.theme = 'light';
+          try {
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = d ? 'dark' : 'light';
+          } catch (e2) {
+            document.documentElement.dataset.theme = 'light';
+          }
         }
       })();
     </script>
