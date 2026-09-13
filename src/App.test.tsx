@@ -31,6 +31,11 @@ describe('App', () => {
     expect(screen.getAllByRole('main')).toHaveLength(1)
   })
 
+  it('has exactly one level-1 heading on the page', () => {
+    render(<App />)
+    expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
+  })
+
   it('offers a skip link to the main content', () => {
     render(<App />)
     expect(screen.getByRole('link', { name: /skip to content/i })).toHaveAttribute(

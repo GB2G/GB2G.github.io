@@ -5,6 +5,10 @@ type Props = {
   index: number
 }
 
+function capitalize(value: string): string {
+  return value.charAt(0).toUpperCase() + value.slice(1)
+}
+
 export default function ProjectRow({ project, index }: Props) {
   return (
     <li className="row">
@@ -23,6 +27,7 @@ export default function ProjectRow({ project, index }: Props) {
       </div>
 
       <div className="mono row__meta">
+        <span className="mono row__category">{capitalize(project.category)}</span>
         <span className="row__year">{project.year}</span>
         {project.links.map((link) => (
           <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">

@@ -5,7 +5,12 @@ import StackStrip from './StackStrip'
 describe('Hero', () => {
   it('renders the name in the level-1 heading', () => {
     render(<Hero />)
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('I build things')
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Kevin El-Saikali')
+  })
+
+  it('renders the tagline beneath the heading', () => {
+    render(<Hero />)
+    expect(screen.getByText(/I build things/)).toBeInTheDocument()
   })
 
   it('states current study and availability', () => {

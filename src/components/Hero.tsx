@@ -5,11 +5,12 @@ export default function Hero() {
     <header className="hero page" id="top">
       <div className="hero__main">
         <p className="mono hero__eyebrow">{profile.eyebrow}</p>
-        <h1 className="hero__headline">
+        <h1 className="hero__name">{profile.name}</h1>
+        <p className="hero__headline">
           {profile.headlineLead}
           <br />
           <em>{profile.headlineAccent}</em>.
-        </h1>
+        </p>
       </div>
       <dl className="hero__meta mono">
         <dt>Currently</dt>

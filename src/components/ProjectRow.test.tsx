@@ -50,4 +50,9 @@ describe('ProjectRow', () => {
     render(<ProjectRow project={linked} index={3} />)
     expect(screen.getByText('03')).toBeInTheDocument()
   })
+
+  it('renders the capitalised category label', () => {
+    render(<ProjectRow project={linked} index={1} />)
+    expect(screen.getByText('Client')).toBeInTheDocument()
+  })
 })

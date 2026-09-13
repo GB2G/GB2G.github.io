@@ -14,6 +14,7 @@ describe('Contact', () => {
     for (const name of ['GitHub', 'LinkedIn']) {
       const link = screen.getByRole('link', { name: new RegExp(name) })
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+      expect(link).toHaveAttribute('target', '_blank')
     }
   })
 
