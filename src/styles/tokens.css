@@ -1,0 +1,30 @@
+:root {
+  --paper: #faf9f7;
+  --paper-raised: #ffffff;
+  --ink: #17171a;
+  --muted: #5e5b55;
+  --rule: #e4e0d8;
+  --accent: #a63f1c;
+
+  --font-serif: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --step-1: 0.5rem;
+  --step-2: 1rem;
+  --step-3: 1.5rem;
+  --step-4: 2.5rem;
+  --step-5: 4rem;
+  --measure: 62ch;
+  --gutter: clamp(1.25rem, 5vw, 2.5rem);
+  --page-max: 68rem;
+}
+
+[data-theme='dark'] {
+  --paper: #101012;
+  --paper-raised: #17171a;
+  --ink: #e8e6e1;
+  --muted: #a29d94;
+  --rule: #26262a;
+  --accent: #e0714a;
+}
