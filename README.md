@@ -1,35 +1,43 @@
-<h1>SEG3525 Portfolio</h1>
+# gb2g.github.io
 
-gb2g.github.io was created as a hub to contain all of the UI/UX designs that I will be creating throughout the SEG3525 – Conception et Analyse des Interfaces Usagers course offered at the University of Ottawa.
+Personal software engineering portfolio for Kevin El-Saikali — fourth-year
+software engineering student at the University of Ottawa.
 
-<h2>Overview</h2>
+Live at **https://gb2g.github.io**.
 
-The goal of this project was to familiarize ourselves with HTML CSS and Javascript while implementing UI/UX design principles learned in our lectures by designing and building a responsive, visually engaging web portfolio. The project emphasizes usability, accessibility, and design consistency.
+## Stack
 
-<h2>Features</h2>
+Vite · React 19 · TypeScript (strict) · Vitest · GitHub Actions → GitHub Pages.
 
-Responsive design using Bootstrap 5<br>
-Animated transitions and interactions<br>
-Clean, modern layout inspired by professional portfolios<br>
-Consolidated all my info into organized sections for:
-<ul>
-  <li>About Me</li>
-  <li>Projects</li>
-  <li>Contact</li>
-</ul>
+No framework beyond React and no router: the site is a single scrolling page, so
+every anchor works on a static host without rewrite rules.
 
- With more sections of the website to come
- 
-<h2>Technologies Used</h2>
+## Running it
 
-<ul>
-  <li>HTML5</li>
-  <li>CSS3</li>
-  <li>JavaScript</li>
-  <li>Bootstrap 5</li>
-</ul>
+```bash
+npm install
+npm run dev        # http://localhost:5173
+```
 
-<h2>This project serves two main purposes:</h2>
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Dev server with hot reload |
+| `npm run build` | Typecheck, then production build to `dist/` |
+| `npm test` | Unit and component tests (Vitest + Testing Library) |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run check-links` | Requests every outbound URL in `src/data/`, fails on any that is unreachable |
 
-Course Requirement: Demonstrates mastery of UI design principles as part of SEG3525.<br>
-Skill Development: Allows you to familiarize yourself with web design principles that you might not have used before such as Bootstrap.
+## Adding a project
+
+Append one object to `src/data/projects.ts`. Nothing else needs to change — no
+component contains a project name, date or URL.
+
+A project with no public link is valid: give it `links: []` and a `note`
+explaining why, and it renders without a dangling anchor.
+
+## Deployment
+
+Every push to `main` runs typecheck, tests and build, then publishes `dist/` to
+GitHub Pages. Link checking runs separately — on pull requests and weekly — and
+does not gate deploys, because an outage on someone else's host should not block
+shipping.
