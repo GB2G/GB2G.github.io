@@ -166,11 +166,15 @@ a {
 
 .hero__name {
   font-size: clamp(1.4rem, 3vw, 1.9rem);
+  letter-spacing: -0.02em;
   margin: 0 0 var(--step-2);
 }
 
 .hero__headline {
+  font-family: var(--font-serif);
   font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
 }
 
 .hero__headline em {

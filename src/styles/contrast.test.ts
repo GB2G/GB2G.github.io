@@ -82,3 +82,17 @@ describe('row__note opacity regression', () => {
     expect(body).not.toMatch(/opacity\s*:/)
   })
 })
+
+// The tagline used to be the <h1> and picked up its serif treatment for free
+// from the `h1, h2, h3 { font-family: var(--font-serif) }` rule. Once it
+// became a <p className="hero__headline">, that rule no longer matches it —
+// .hero__headline must declare its own font-family or the editorial serif
+// headline silently renders as generic sans.
+describe('hero__headline serif regression', () => {
+  it('.hero__headline declares font-family: var(--font-serif)', () => {
+    const match = /\.hero__headline\s*\{([^}]*)\}/.exec(globalCss)
+    expect(match, '.hero__headline rule not found in global.css').not.toBeNull()
+    const body = match?.[1] ?? ''
+    expect(body).toMatch(/font-family\s*:\s*var\(--font-serif\)/)
+  })
+})
