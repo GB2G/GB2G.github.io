@@ -416,3 +416,186 @@ a {
   padding-block: var(--step-3);
   color: var(--muted);
 }
+
+/* ---- Scroll-triggered reveals ---- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > *:nth-child(1) {
+  transition-delay: 0ms;
+}
+.reveal-stagger > *:nth-child(2) {
+  transition-delay: 70ms;
+}
+.reveal-stagger > *:nth-child(3) {
+  transition-delay: 140ms;
+}
+.reveal-stagger > *:nth-child(4) {
+  transition-delay: 210ms;
+}
+.reveal-stagger > *:nth-child(5) {
+  transition-delay: 280ms;
+}
+.reveal-stagger > *:nth-child(6) {
+  transition-delay: 350ms;
+}
+.reveal-stagger > *:nth-child(n + 7) {
+  transition-delay: 420ms;
+}
+
+/* ---- Hero load-in ---- */
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__eyebrow,
+.hero__name,
+.hero__headline,
+.hero__meta {
+  animation: reveal-up 0.7s ease both;
+}
+
+.hero__eyebrow {
+  animation-delay: 0ms;
+}
+.hero__name {
+  animation-delay: 90ms;
+}
+.hero__headline {
+  animation-delay: 160ms;
+}
+.hero__meta {
+  animation-delay: 260ms;
+}
+
+/* ---- Hero accent shimmer ---- */
+
+@keyframes accent-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.hero__headline em {
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 55%, var(--ink)) 25%,
+    var(--accent) 50%,
+    color-mix(in srgb, var(--accent) 55%, var(--ink)) 75%,
+    var(--accent) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: accent-shimmer 6s linear infinite;
+}
+
+/* ---- Nav active indicator ---- */
+
+.nav__links a {
+  position: relative;
+  padding-bottom: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav__links a:hover::after,
+.nav__links a[aria-current='true']::after {
+  transform: scaleX(1);
+}
+
+/* ---- Theme toggle micro-interaction ---- */
+
+.theme-toggle {
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.theme-toggle:active {
+  transform: scale(0.94);
+}
+
+.theme-toggle span[aria-hidden='true'] {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover span[aria-hidden='true'] {
+  transform: rotate(15deg);
+}
+
+/* ---- Project row hover lift ---- */
+
+.row {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--ink) 25%, transparent);
+}
+
+/* ---- Contact / social link underline ---- */
+
+.contact__list a,
+.row__meta a {
+  transition: color 0.15s ease;
+}

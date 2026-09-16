@@ -1,3 +1,5 @@
+import { useReveal } from '../hooks/useReveal'
+
 type Props = {
   index: string
   title: string
@@ -6,8 +8,10 @@ type Props = {
 }
 
 export default function SectionHead({ index, title, count, headingId }: Props) {
+  const { ref, isVisible } = useReveal<HTMLDivElement>()
+
   return (
-    <div className="sechead">
+    <div ref={ref} className={`sechead reveal${isVisible ? ' is-visible' : ''}`}>
       <span className="mono sechead__num">{index}</span>
       <h2 className="sechead__title" id={headingId}>
         {title}

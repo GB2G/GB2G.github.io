@@ -1,8 +1,11 @@
+import { useReveal } from '../hooks/useReveal'
 import { profile } from '../data/profile'
 
 export default function Contact() {
+  const { ref, isVisible } = useReveal<HTMLDivElement>()
+
   return (
-    <div className="contact">
+    <div ref={ref} className={`contact reveal${isVisible ? ' is-visible' : ''}`}>
       <p className="contact__lead">
         The fastest way to reach me is email. I read everything that arrives.
       </p>
