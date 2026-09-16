@@ -51,6 +51,18 @@ a {
   text-transform: uppercase;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: absolute;
   left: var(--step-2);
@@ -525,6 +537,32 @@ a {
   -webkit-background-clip: text;
   color: transparent;
   animation: accent-shimmer 6s linear infinite;
+}
+
+/* ---- Hero typewriter cursor ---- */
+
+@keyframes cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hero__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.85em;
+  margin-left: 0.08em;
+  vertical-align: -0.1em;
+  background: var(--accent);
+  animation: cursor-blink 1s steps(1) infinite;
 }
 
 /* ---- Nav active indicator ---- */

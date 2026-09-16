@@ -1,6 +1,9 @@
+import { useTypewriter } from '../hooks/useTypewriter'
 import { profile } from '../data/profile'
 
 export default function Hero() {
+  const accent = useTypewriter(profile.headlineAccents)
+
   return (
     <header className="hero page" id="top">
       <div className="hero__main">
@@ -9,7 +12,11 @@ export default function Hero() {
         <p className="hero__headline">
           {profile.headlineLead}
           <br />
-          <em>{profile.headlineAccent}</em>.
+          <em className="hero__cycle" aria-hidden="true">
+            {accent}
+            <span className="hero__cursor" />
+          </em>
+          <span className="visually-hidden">{profile.headlineAccents[0] ?? ''}</span>.
         </p>
       </div>
       <dl className="hero__meta mono">

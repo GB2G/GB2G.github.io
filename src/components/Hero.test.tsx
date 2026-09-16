@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { profile } from '../data/profile'
 import Hero from './Hero'
 import StackStrip from './StackStrip'
 
@@ -11,6 +12,15 @@ describe('Hero', () => {
   it('renders the tagline beneath the heading', () => {
     render(<Hero />)
     expect(screen.getByText(/I build things/)).toBeInTheDocument()
+  })
+
+  it('hides the cycling accent phrase from assistive tech and offers a stable alternative', () => {
+    const { container } = render(<Hero />)
+    const cycling = container.querySelector('.hero__cycle')
+    expect(cycling).toHaveAttribute('aria-hidden', 'true')
+
+    const fallback = container.querySelector('.visually-hidden')
+    expect(fallback).toHaveTextContent(profile.headlineAccents[0] ?? '')
   })
 
   it('states current study and availability', () => {

@@ -30,7 +30,7 @@ export type Social = {
 export type Profile = {
   name: string
   headlineLead: string
-  headlineAccent: string
+  headlineAccents: readonly string[]
   eyebrow: string
   bio: string
   currently: string
